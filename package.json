@@ -6,6 +6,10 @@
   "files": [
     "dist/"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ackertyson/provide-websocket-client-vue.git"
+  },
   "scripts": {
     "prepublishOnly": "gulp build && npm test",
     "test": "NODE_ENV=test gulp test"
