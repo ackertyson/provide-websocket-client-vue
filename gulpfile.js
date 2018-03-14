@@ -10,8 +10,20 @@ gulp.task('clean', (done) => {
 })
 
 gulp.task('build:server', () => {
+  const uglify = require('gulp-uglify-es').default
+  const gutil = require('gulp-util')
+  const rename = require('gulp-rename')
   return gulp.src('src/**/*.coffee')
     .pipe(coffee({ bare: true }))
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist/'))
+})
+
+gulp.task('build:minify', ['build:server'], () => {
+  return gulp.src('dist/index.js')
     .pipe(gulp.dest('dist/'))
 })
 
